@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>आलोर जोगार फाउंडेशन · दान रसीद</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,system-ui,'Noto Sans Devanagari','Noto Sans Bengali',sans-serif;}
+body{background:linear-gradient(145deg,#eaf6ec 0%,#dceee2 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:1.5rem 1rem;}
+.tab-nav-wrap{max-width:740px;width:100%;margin-bottom:1rem;}
+.tab-nav{display:flex;gap:6px;background:#fff;padding:6px;border-radius:50px;box-shadow:0 8px 22px -10px rgba(15,60,35,0.2);border:1.5px solid #d5e8db;}
+.tab-btn{flex:1;padding:12px 10px;border:none;background:transparent;color:#145c2e;font-weight:800;font-size:0.88rem;border-radius:44px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s;font-family:inherit;}
+.tab-btn.active{background:#1b7a3d;color:#fff;box-shadow:0 6px 14px -4px #146030;}
+.tab-btn i{font-size:1rem;}
+.tab-page{display:none;max-width:740px;width:100%;}
+.tab-page.active{display:block;}
+.form-card{width:100%;background:rgba(255,255,255,0.95);padding:1.8rem 1.6rem;border-radius:32px;box-shadow:0 20px 50px -12px rgba(15,60,35,0.25);border:1px solid rgba(27,122,61,0.15);position:relative;}
+.lang-selector{position:absolute;top:15px;left:15px;z-index:1000;}
+.lang-selector select{padding:8px 12px;border-radius:20px;border:1.5px solid #1b7a3d;background:#fff;color:#1b7a3d;font-weight:800;font-size:0.8rem;cursor:pointer;outline:none;box-shadow:0 4px 10px rgba(0,0,0,0.08);appearance:none;background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231b7a3d' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px;}
+.logo-area{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:1.2rem;margin-top:10px;}
+.logo-frame{width:120px;height:120px;border-radius:50%;background:#fff;border:3px solid #1b7a3d;box-shadow:0 8px 22px -8px rgba(27,122,61,0.55);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.logo-frame img{width:100%;height:100%;object-fit:cover;display:none;}
+.logo-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1b7a3d;font-size:0.62rem;font-weight:700;text-align:center;gap:4px;padding:6px;}
+.logo-fallback i{font-size:1.8rem;}
+.logo-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:#eef7f0;border:1.5px dashed #1b7a3d;color:#145c2e;padding:7px 16px;border-radius:40px;font-size:0.78rem;font-weight:700;}
+.logo-btn:hover{background:#dff0e4;}
+.header-brand{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.4rem;}
+.header-brand h1{font-size:1.35rem;font-weight:800;color:#0f3d20;display:flex;align-items:center;gap:10px;letter-spacing:-0.2px;line-height:1.25;}
+.header-brand h1 i{color:#1b7a3d;font-size:1.5rem;}
+.org-badge{background:#1b7a3d;color:#eafff0;padding:0.3rem 1rem;border-radius:40px;font-size:0.7rem;font-weight:700;letter-spacing:0.4px;white-space:nowrap;}
+.org-badge.live{background:#16a34a;}
+.org-badge.loading{background:#e67e22;}
+.org-badge.offline{background:#c0392b;}
+.form-group{margin-bottom:1.1rem;}
+label{display:block;font-weight:700;color:#14442a;margin-bottom:5px;font-size:0.83rem;}
+label i{margin-right:8px;color:#1b7a3d;width:18px;}
+input,select,textarea{width:100%;padding:12px 18px;background:#fff;border:1.5px solid #c9dccf;border-radius:30px;font-size:0.98rem;color:#122b1c;outline:none;transition:.2s;box-shadow:inset 0 2px 6px rgba(0,0,0,0.02);appearance:none;font-family:inherit;}
+textarea{border-radius:22px;resize:vertical;min-height:64px;}
+select{background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231b7a3d' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:44px;}
+input:focus,select:focus,textarea:focus{border-color:#1b7a3d;box-shadow:0 0 0 4px rgba(27,122,61,0.14);}
+.row-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.phone-wrapper{display:flex;align-items:center;background:#fff;border:1.5px solid #c9dccf;border-radius:30px;transition:.2s;overflow:hidden;box-shadow:inset 0 2px 6px rgba(0,0,0,0.02);}
+.phone-wrapper:focus-within{border-color:#1b7a3d;box-shadow:0 0 0 4px rgba(27,122,61,0.14);}
+.phone-prefix{background:#eef7f0;padding:12px 0 12px 16px;font-weight:800;color:#145c2e;font-size:0.98rem;white-space:nowrap;border-right:1.5px solid #c9dccf;min-width:52px;text-align:center;}
+.phone-wrapper input{border:none!important;border-radius:0!important;box-shadow:none!important;padding:12px 16px 12px 12px;flex:1;background:transparent;}
+.btn-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.6rem;justify-content:center;}
+.btn{border:none;padding:13px 22px;border-radius:60px;font-weight:800;font-size:0.92rem;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:.15s ease;box-shadow:0 6px 18px rgba(15,60,35,0.12);flex:1 0 auto;justify-content:center;min-width:120px;font-family:inherit;}
+.btn-primary{background:#1b7a3d;color:#fff;box-shadow:0 8px 20px -6px #146030;}
+.btn-primary:hover{background:#146030;transform:scale(0.97);}
+.btn-whatsapp{background:#25D366;color:#fff;box-shadow:0 8px 20px -6px #1da851;}
+.btn-whatsapp:hover{background:#1da851;transform:scale(0.97);}
+.btn-outline{background:transparent;border:1.5px solid #b9d3c2;color:#14442a;}
+.btn-outline:hover{background:#eef7f0;}
+.btn-orange{background:#e67e22;color:#fff;box-shadow:0 8px 20px -6px #b95d10;}
+.btn-orange:hover{background:#b95d10;transform:scale(0.97);}
+.btn:disabled{opacity:.5;pointer-events:none;filter:grayscale(.3);}
+.status-badge{margin-top:1.2rem;padding:12px 18px;border-radius:60px;background:#eef7f0;color:#14442a;font-size:0.9rem;text-align:center;border-left:5px solid #1b7a3d;transition:.2s;word-break:break-word;}
+.status-badge i{margin-right:10px;color:#1b7a3d;}
+.status-badge a{color:#146030;font-weight:700;text-decoration:underline;display:inline-block;margin-top:6px;}
+.footer-note{margin-top:1.6rem;color:#4a6b57;font-size:0.8rem;text-align:center;opacity:.9;}
+.footer-note i{color:#1b7a3d;}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:1rem;}
+.stat-card{border-radius:20px;padding:14px 14px;border:1.5px solid #d5e8db;background:#fff;box-shadow:0 6px 16px -8px rgba(15,60,35,0.12);position:relative;overflow:hidden;}
+.stat-card.green{background:linear-gradient(135deg,#eef7f0,#dff0e4);border-color:#1b7a3d;}
+.stat-card.orange{background:linear-gradient(135deg,#fef5e7,#fdebd0);border-color:#e67e22;}
+.stat-card.blue{background:linear-gradient(135deg,#eef3fb,#dbe6f5);border-color:#17458f;}
+.stat-card.red{background:linear-gradient(135deg,#fdeeee,#fadbd8);border-color:#c0392b;}
+.stat-card h3{font-size:.66rem;color:#4a6b57;font-weight:800;text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.stat-card h3 i{font-size:.9rem;}
+.stat-card.green h3 i,.stat-card.green .value{color:#146030;}
+.stat-card.orange h3 i,.stat-card.orange .value{color:#a85a00;}
+.stat-card.blue h3 i,.stat-card.blue .value{color:#17458f;}
+.stat-card.red h3 i,.stat-card.red .value{color:#a02c20;}
+.stat-card .value{font-size:1.28rem;font-weight:800;color:#0f3d20;letter-spacing:-.3px;word-break:break-word;}
+.stat-card .sub{font-size:.66rem;color:#7a8b82;margin-top:3px;font-weight:600;}
+.dash-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:1rem;}
+.dash-head h1{font-size:1.2rem;font-weight:800;color:#0f3d20;display:flex;align-items:center;gap:10px;}
+.dash-head h1 i{color:#1b7a3d;}
+.refresh-btn{background:#eef7f0;border:1.5px solid #1b7a3d;color:#145c2e;padding:6px 14px;border-radius:30px;font-weight:800;font-size:.72rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.2s;font-family:inherit;}
+.refresh-btn:hover{background:#dff0e4;}
+.refresh-btn:disabled{opacity:.6;cursor:not-allowed;}
+.refresh-btn.spinning i{animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.dash-card{background:#fff;border-radius:22px;padding:16px 14px;border:1.5px solid #d5e8db;box-shadow:0 10px 26px -14px rgba(15,60,35,0.2);margin-bottom:1rem;}
+.dash-card h2{font-size:.95rem;color:#0f3d20;font-weight:800;display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1.5px dashed #d5e8db;}
+.dash-card h2 i{color:#1b7a3d;font-size:1rem;}
+.txn-list{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto;padding-right:4px;}
+.txn-list::-webkit-scrollbar{width:6px;}
+.txn-list::-webkit-scrollbar-thumb{background:#b9d3c2;border-radius:6px;}
+.txn-item{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:10px 12px;background:#f8fcf9;border-radius:14px;border-left:4px solid #1b7a3d;}
+.txn-item.expense{border-left-color:#e67e22;background:#fef9f2;}
+.txn-item .txn-info{flex:1;min-width:0;}
+.txn-item .txn-title{font-weight:800;color:#0f3d20;font-size:.86rem;word-break:break-word;}
+.txn-item .txn-meta{font-size:.68rem;color:#7a8b82;margin-top:3px;font-weight:600;line-height:1.4;}
+.txn-item .txn-amount{font-weight:800;color:#146030;font-size:.94rem;white-space:nowrap;}
+.txn-item.expense .txn-amount{color:#a85a00;}
+.del-btn{background:transparent;border:none;color:#c0392b;cursor:pointer;padding:4px 7px;font-size:.75rem;border-radius:8px;flex:0 0 auto;}
+.del-btn:hover{background:#fdeeee;}
+.empty-state{text-align:center;padding:24px 12px;color:#7a8b82;font-size:.85rem;}
+.empty-state i{font-size:2rem;color:#b9d3c2;display:block;margin-bottom:8px;}
+.loading-state{text-align:center;padding:24px 12px;color:#7a8b82;font-size:.85rem;}
+.loading-state i{font-size:1.8rem;color:#1b7a3d;display:block;margin-bottom:8px;animation:spin 1s linear infinite;}
+#receipt-canvas-area{position:absolute;left:-9999px;top:0;width:480px;background:#ffffff;padding:0;z-index:999;font-family:'Segoe UI',Roboto,'Noto Sans Devanagari','Noto Sans Bengali',sans-serif;}
+#receipt-canvas-area .receipt-inner{border:3px solid #1b7a3d;border-radius:10px;overflow:hidden;background:#fff;}
+.rc-topband{height:10px;background:linear-gradient(90deg,#1b7a3d,#f5c518,#17458f);}
+.rc-bottomband{height:10px;background:linear-gradient(90deg,#17458f,#f5c518,#1b7a3d);}
+.rc-logo-wrap{display:flex;justify-content:center;padding:16px 0 6px 0;}
+.rc-logo{width:92px;height:92px;border-radius:50%;object-fit:cover;border:2.5px solid #1b7a3d;display:none;}
+.rc-logo-fallback{width:92px;height:92px;border-radius:50%;border:2.5px dashed #1b7a3d;display:flex;align-items:center;justify-content:center;color:#1b7a3d;font-size:2rem;}
+.rc-org{text-align:center;font-size:1.5rem;font-weight:800;color:#145c2e;letter-spacing:.5px;line-height:1.2;}
+.rc-sub{text-align:center;font-size:.78rem;font-weight:700;color:#17458f;letter-spacing:1.5px;margin-top:2px;}
+.rc-tagline{text-align:center;font-size:.8rem;color:#7a5b00;background:#fff7d6;margin:6px auto 0 auto;padding:3px 10px;border-radius:20px;display:table;font-weight:600;}
+.rc-address{text-align:center;font-size:.76rem;color:#3c4a41;margin-top:8px;line-height:1.5;padding:0 16px;}
+.rc-title{text-align:center;font-size:.95rem;font-weight:800;color:#fff;background:#1b7a3d;letter-spacing:1.5px;margin:12px 18px 0 18px;padding:7px 0;border-radius:6px;}
+.rc-meta{display:flex;justify-content:space-between;font-size:.8rem;color:#122b1c;padding:10px 20px 0 20px;font-weight:600;}
+.rc-body{padding:8px 20px 0 20px;}
+.rc-row{display:flex;padding:6px 0;font-size:.86rem;color:#122b1c;border-bottom:1px dotted #cfe3d6;}
+.rc-row:last-child{border-bottom:none;}
+.rc-label{font-weight:700;min-width:128px;color:#145c2e;}
+.rc-value{font-weight:500;flex:1;word-break:break-word;}
+.rc-amount-big{text-align:center;font-size:2.3rem;font-weight:800;color:#0f3d20;padding:8px 0 6px 0;letter-spacing:1px;margin:10px 20px 0 20px;border-top:2px dashed #1b7a3d;border-bottom:2px dashed #1b7a3d;}
+.rc-words{text-align:center;font-size:.74rem;color:#3c4a41;padding:8px 22px 0 22px;line-height:1.5;}
+.rc-words b{color:#145c2e;}
+.rc-signatures{display:flex;justify-content:space-between;padding:34px 22px 0 22px;font-size:.74rem;color:#145c2e;font-weight:700;text-align:center;}
+.rc-signatures span{flex:1;border-top:1.5px solid #145c2e;padding-top:6px;margin:0 8px;}
+.rc-footer{text-align:center;font-size:.72rem;color:#145c2e;font-weight:700;margin:16px 18px 12px 18px;background:#eef7f0;border-radius:20px;padding:7px 4px;}
+.rc-footer small{display:block;font-weight:500;color:#5b7566;font-size:.62rem;margin-top:2px;}
+@media (max-width:600px){
+  .row-2col{grid-template-columns:1fr;gap:0;}
+  .form-card{padding:1.3rem 1.1rem;border-radius:26px;}
+  .header-brand h1{font-size:1.1rem;}
+  .org-badge{font-size:.6rem;padding:.2rem .8rem;}
+  .btn{font-size:.82rem;padding:11px 14px;min-width:96px;}
+  .logo-frame{width:100px;height:100px;}
+  .lang-selector{top:10px;left:10px;}
+  .lang-selector select{font-size:0.7rem;padding:6px 10px;padding-right:26px;}
+  .tab-btn{font-size:.78rem;padding:10px 6px;gap:5px;}
+  .tab-btn i{font-size:.9rem;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .stat-card{padding:12px 10px;}
+  .stat-card .value{font-size:1.05rem;}
+  .stat-card h3{font-size:.6rem;}
+  .dash-head h1{font-size:1rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="tab-nav-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="receipt"><i class="fas fa-receipt"></i> <span data-i18n="tabReceipt">रसीद बनाएँ</span></button>
+    <button class="tab-btn" data-tab="dashboard"><i class="fas fa-chart-line"></i> <span data-i18n="tabDashboard">डैशबोर्ड</span></button>
+  </div>
+</div>
+
+<!-- ==================== PAGE 1: RECEIPT ==================== -->
+<div id="page-receipt" class="tab-page active">
+  <div class="form-card">
+    <div class="lang-selector">
+      <select id="languageSelect">
+        <option value="hi">हिंदी</option>
+        <option value="en">English</option>
+        <option value="bn">বাংলা</option>
+      </select>
+    </div>
+
+    <div class="logo-area">
+      <div class="logo-frame">
+        <img id="ngoLogo" alt="Logo">
+        <div class="logo-fallback" id="logoFallback">
+          <i class="fas fa-hands-holding-heart"></i>
+          <span data-i18n="logoFallback">लोगो अपलोड करें</span>
+        </div>
+      </div>
+      <label class="logo-btn">
+        <i class="fas fa-upload"></i> <span data-i18n="logoBtn">लोगो बदलें / अपलोड करें</span>
+        <input type="file" id="logoInput" accept="image/*" hidden>
+      </label>
+    </div>
+
+    <div class="header-brand">
+      <h1><i class="fas fa-hand-holding-heart"></i> <span data-i18n="header">आलोर जोगार फाउंडेशन</span></h1>
+      <span class="org-badge"><i class="fas fa-certificate"></i> <span data-i18n="badge">एन.जी.ओ.</span></span>
+    </div>
+
+    <form id="receiptForm" onsubmit="return false;">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> <span data-i18n="nameLabel">दानदाता का नाम</span></label>
+        <input type="text" id="customerName" data-i18n-placeholder="namePh" placeholder="e.g. राहुल शर्मा" required>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-location-dot"></i> <span data-i18n="addrLabel">पता (वैकल्पिक)</span></label>
+        <input type="text" id="donorAddress" data-i18n-placeholder="addrPh" placeholder="e.g. अमराई, दुर्गापुर">
+      </div>
+      <div class="row-2col">
+        <div class="form-group">
+          <label><i class="fas fa-calendar-day"></i> <span data-i18n="dateLabel">दिनांक</span></label>
+          <input type="date" id="receiptDate" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-money-bill-wave"></i> <span data-i18n="amtLabel">राशि (₹)</span></label>
+          <input type="number" id="amount" data-i18n-placeholder="amtPh" placeholder="0.00" step="0.01" required>
+        </div>
+      </div>
+      <div class="row-2col">
+        <div class="form-group">
+          <label><i class="fas fa-hashtag"></i> <span data-i18n="recLabel">रसीद क्र.</span></label>
+          <input type="text" id="receiptNumber" data-i18n-placeholder="recPh" placeholder="AJF-2026-001" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fab fa-whatsapp"></i> <span data-i18n="waLabel">WhatsApp नंबर</span></label>
+          <div class="phone-wrapper">
+            <span class="phone-prefix">+91</span>
+            <input type="tel" id="whatsappNumber" data-i18n-placeholder="waPh" placeholder="98765 43210" required>
+          </div>
+          <div style="font-size:.68rem;color:#5b7566;margin-top:4px;padding-left:8px;">
+            <i class="fas fa-info-circle"></i> <span data-i18n="waHint">केवल 10 अंक डालें</span>
+          </div>
+        </div>
+      </div>
+      <div class="row-2col">
+        <div class="form-group">
+          <label><i class="fas fa-bullseye"></i> <span data-i18n="purpLabel">दान का उद्देश्य</span></label>
+          <select id="purpose"></select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-wallet"></i> <span data-i18n="modeLabel">भुगतान माध्यम</span></label>
+          <select id="payMode"></select>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="saveAndShareBtn">
+          <i class="fas fa-cloud-upload-alt"></i> <span data-i18n="btnSave">सेव &amp; शेयर</span>
+        </button>
+        <button type="button" class="btn btn-whatsapp" id="shareOnlyBtn">
+          <i class="fab fa-whatsapp"></i> <span data-i18n="btnShare">केवल शेयर</span>
+        </button>
+        <button type="button" class="btn btn-outline" id="resetBtn">
+          <i class="fas fa-undo-alt"></i> <span data-i18n="btnReset">रीसेट</span>
+        </button>
+      </div>
+    </form>
+
+    <div id="statusMessage" class="status-badge">
+      <i class="fas fa-info-circle"></i> <span data-i18n="statusInit">विवरण भरें &amp; "सेव &amp; शेयर" क्लिक करें</span>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-database"></i> <span data-i18n="footerNote">डेटा Google Sheet में सेव · रसीद इमेज के रूप में शेयर</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: DASHBOARD ==================== -->
+<div id="page-dashboard" class="tab-page">
+  <div class="form-card">
+    <div class="dash-head">
+      <h1><i class="fas fa-chart-line"></i> <span data-i18n="dashTitle">रिपोर्ट डैशबोर्ड</span></h1>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+        <span id="liveBadge" class="org-badge loading"><i class="fas fa-sync-alt fa-spin"></i> <span data-i18n="dashLoading">लोड हो रहा...</span></span>
+        <button class="refresh-btn" id="refreshBtn"><i class="fas fa-sync-alt"></i> <span data-i18n="dashRefresh">रिफ्रेश</span></button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card green">
+        <h3><i class="fas fa-hand-holding-heart"></i> <span data-i18n="statCollection">कुल Collection</span></h3>
+        <div class="value" id="statCollection">₹ —</div>
+        <div class="sub" data-i18n="statCollectionSub">Google Sheet से लाइव</div>
+      </div>
+      <div class="stat-card blue">
+        <h3><i class="fas fa-users"></i> <span data-i18n="statDonors">कुल Donors</span></h3>
+        <div class="value" id="statDonors">—</div>
+        <div class="sub" data-i18n="statDonorsSub">कुल दानदाता</div>
+      </div>
+      <div class="stat-card orange">
+        <h3><i class="fas fa-hands-helping"></i> <span data-i18n="statExpense">कुल Help / खर्च</span></h3>
+        <div class="value" id="statExpense">₹ 0.00</div>
+        <div class="sub" data-i18n="statExpenseSub">समाज सेवा में खर्च</div>
+      </div>
+      <div class="stat-card red">
+        <h3><i class="fas fa-wallet"></i> <span data-i18n="statBalance">शेष Balance</span></h3>
+        <div class="value" id="statBalance">₹ —</div>
+        <div class="sub" data-i18n="statBalanceSub">उपलब्ध राशि</div>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <h2><i class="fas fa-plus-circle"></i> <span data-i18n="addExpTitle">नया खर्च / Help दर्ज करें</span></h2>
+      <div class="expense-form">
+        <div class="row-2col">
+          <div class="form-group">
+            <label><i class="fas fa-calendar-day"></i> <span data-i18n="expDateLabel">दिनांक</span></label>
+            <input type="date" id="expDate">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tag"></i> <span data-i18n="expCategoryLabel">खर्च की श्रेणी</span></label>
+            <select id="expCategory"></select>
+          </div>
+        </div>
+        <div class="row-2col">
+          <div class="form-group">
+            <label><i class="fas fa-money-bill-wave"></i> <span data-i18n="expAmountLabel">राशि (₹)</span></label>
+            <input type="number" id="expAmount" placeholder="0.00" step="0.01">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-user-check"></i> <span data-i18n="expBeneficiaryLabel">किसे मदद मिली</span></label>
+            <input type="text" id="expBeneficiary" data-i18n-placeholder="expBeneficiaryPh" placeholder="e.g. सुनीता देवी / अनाथ आश्रम">
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-pen"></i> <span data-i18n="expNoteLabel">विवरण (वैकल्पिक)</span></label>
+          <textarea id="expNote" data-i18n-placeholder="expNotePh" placeholder="जैसे: 3 बच्चों की स्कूल फीस"></textarea>
+        </div>
+        <div class="btn-group" style="margin-top:1rem;">
+          <button type="button" class="btn btn-orange" id="addExpenseBtn">
+            <i class="fas fa-plus"></i> <span data-i18n="expAddBtn">खर्च जोड़ें</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <h2><i class="fas fa-list-ul"></i> <span data-i18n="expListTitle">खर्च / Help की सूची</span></h2>
+      <div class="txn-list" id="expensesList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HIDDEN RECEIPT ==================== -->
+<div id="receipt-canvas-area">
+  <div class="receipt-inner">
+    <div class="rc-topband"></div>
+    <div class="rc-logo-wrap">
+      <img id="pdfLogo" class="rc-logo" alt="" crossorigin="anonymous">
+      <div id="pdfLogoFallback" class="rc-logo-fallback"><i class="fas fa-hands-holding-heart"></i></div>
+    </div>
+    <div class="rc-org" data-i18n="header">आलोर जोगार फाउंडेशन</div>
+    <div class="rc-sub" data-i18n="rcSub">( एन.जी.ओ. )</div>
+    <div class="rc-tagline" data-i18n="rcTagline">"मानवता के साथ, समाज के लिए, एक आलोक"</div>
+    <div class="rc-address" data-i18n="rcAddress">
+      अमराई, दुर्गापुर, पश्चिम वर्धमान, पश्चिम बंगाल – 713203<br>
+      संपर्क : 8944037258 / 9093300939 / 8210672676 / 9735141671
+    </div>
+    <div class="rc-title" data-i18n="rcTitle">दान रसीद</div>
+    <div class="rc-meta">
+      <span><span data-i18n="rcRec">रसीद क्र.</span> : <b id="pdfReceiptDisplay">—</b></span>
+      <span><span data-i18n="rcDate">दिनांक</span> : <b id="pdfDateDisplay">—</b></span>
+    </div>
+    <div class="rc-body">
+      <div class="rc-row">
+        <span class="rc-label" data-i18n="rcName">दानदाता का नाम</span>
+        <span class="rc-value" id="pdfNameDisplay">—</span>
+      </div>
+      <div class="rc-row" id="rowAddress">
+        <span class="rc-label" data-i18n="rcAddr">पता</span>
+        <span class="rc-value" id="pdfAddressDisplay">—</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-label" data-i18n="rcMob">मोबाइल</span>
+        <span class="rc-value" id="pdfMobileDisplay">—</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-label" data-i18n="rcPurp">दान का उद्देश्य</span>
+        <span class="rc-value" id="pdfPurposeDisplay">—</span>
+      </div>
+      <div class="rc-row">
+        <span class="rc-label" data-i18n="rcMode">भुगतान माध्यम</span>
+        <span class="rc-value" id="pdfModeDisplay">—</span>
+      </div>
+    </div>
+    <div class="rc-amount-big">₹ <span id="pdfAmountBig">0.00</span></div>
+    <span id="pdfAmountDisplay" style="display:none;">0.00</span>
+    <div class="rc-words"><span data-i18n="rcWords">रुपये शब्दों में</span> : <b id="pdfWords">—</b></div>
+    <div class="rc-signatures">
+      <span data-i18n="rcSig1">दानदाता के हस्ताक्षर</span>
+      <span data-i18n="rcSig2">अधिकृत हस्ताक्षर / मोहर</span>
+    </div>
+    <div class="rc-footer">
+      <span data-i18n="rcFooter">"मानवता की सेवा में, आलोर जोगार..."</span>
+      <small data-i18n="rcThanks">धन्यवाद · Thank you for your kind donation</small>
+    </div>
+    <div class="rc-bottomband"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================== CONFIG ================== */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzBoTOaEqvPpv8pcrC7DdFHPjz7uupwT3p76eB863tJ4nHC1T9RsAVD6GMRiFFNTeKk/exec';
+
+const LANG_LOGOS = {
+  hi: 'https://static.iimg.live/uploads/wonderful-memory-3658.jpeg',
+  en: 'https://static.iimg.live/uploads/excellent-snapshot-9944.jpeg',
+  bn: 'https://static.iimg.live/uploads/wonderful-memory-1163.jpeg'
+};
+
+/* ============ EXPENSE CATEGORIES (value = stored in sheet; display = translated) ============ */
+const EXPENSE_CATEGORIES = [
+  { value: 'शिक्षा',          icon: '📚', hi: 'शिक्षा',              en: 'Education',        bn: 'শিক্ষা' },
+  { value: 'स्वास्थ्य',        icon: '🏥', hi: 'स्वास्थ्य / चिकित्सा', en: 'Health / Medical', bn: 'স্বাস্থ্য / চিকিৎসা' },
+  { value: 'भोजन',           icon: '🍚', hi: 'भोजन',                en: 'Food',             bn: 'খাবার' },
+  { value: 'वस्त्र',          icon: '👕', hi: 'वस्त्र',              en: 'Clothing',         bn: 'বস্ত্র' },
+  { value: 'आवास',           icon: '🏠', hi: 'आवास',                en: 'Shelter',          bn: 'আশ্রয়' },
+  { value: 'विवाह सहायता',   icon: '💍', hi: 'विवाह सहायता',        en: 'Marriage Support', bn: 'বিবাহ সহায়তা' },
+  { value: 'आपदा राहत',       icon: '🚨', hi: 'आपदा राहत',           en: 'Disaster Relief',  bn: 'দুর্যোগ ত্রাণ' },
+  { value: 'अन्य',           icon: '📦', hi: 'अन्य',                en: 'Other',            bn: 'অন্যান্য' }
+];
+
+function getCategoryDisplay(value){
+  const cat = EXPENSE_CATEGORIES.find(c => c.value === value);
+  if (!cat) return value || '';
+  return cat.icon + ' ' + (cat[currentLang] || cat.hi);
+}
+
+/* ============ LIVE STATE ============ */
+let liveDonations = [];
+let liveExpenses = [];
+let liveStatus = 'idle';
+let liveErrorMsg = '';
+let lastFetched = null;
+
+/* ============ JSONP FETCHER ============ */
+function jsonpFetch(url, timeoutMs){
+  timeoutMs = timeoutMs || 15000;
+  return new Promise(function(resolve, reject){
+    const cbName = 'ajf_cb_' + Date.now() + '_' + Math.floor(Math.random()*1e6);
+    let script = document.createElement('script');
+    let done = false;
+    const cleanup = function(){
+      if (done) return;
+      done = true;
+      try { delete window[cbName]; } catch(e){ window[cbName] = undefined; }
+      if (script && script.parentNode) script.parentNode.removeChild(script);
+      clearTimeout(timer);
+    };
+    const timer = setTimeout(function(){
+      cleanup();
+      reject(new Error('Request timeout'));
+    }, timeoutMs);
+    window[cbName] = function(data){ cleanup(); resolve(data); };
+    script.onerror = function(){ cleanup(); reject(new Error('Script load failed')); };
+    const sep = url.indexOf('?') === -1 ? '?' : '&';
+    script.src = url + sep + 'callback=' + cbName + '&_=' + Date.now();
+    document.body.appendChild(script);
+  });
+}
+
+/* ============ CORS-SAFE IMAGE ============ */
+const IMG_PROXY = 'https://images.weserv.nl/?url=';
+const logoDataCache = {};
+
+async function urlToDataURL(url){
+  if (!url) return '';
+  if (url.indexOf('data:') === 0) return url;
+  if (logoDataCache[url]) return logoDataCache[url];
+  const candidates = [url, IMG_PROXY + encodeURIComponent(url)];
+  for (let i = 0; i < candidates.length; i++){
+    try{
+      const res = await fetch(candidates[i], { mode:'cors', cache:'force-cache' });
+      if (!res.ok) continue;
+      const blob = await res.blob();
+      const dataUrl = await new Promise(function(resolve, reject){
+        const fr = new FileReader();
+        fr.onload = function(){ resolve(fr.result); };
+        fr.onerror = reject;
+        fr.readAsDataURL(blob);
+      });
+      logoDataCache[url] = dataUrl;
+      return dataUrl;
+    } catch(e){}
+  }
+  return url;
+}
+
+/* ================== TRANSLATIONS ================== */
+const translations = {
+  hi: {
+    title: "आलोर जोगार फाउंडेशन · दान रसीद",
+    tabReceipt: "रसीद बनाएँ",
+    tabDashboard: "डैशबोर्ड",
+    header: "आलोर जोगार फाउंडेशन",
+    badge: "एन.जी.ओ.",
+    logoFallback: "लोगो अपलोड करें",
+    logoBtn: "लोगो बदलें / अपलोड करें",
+    nameLabel: "दानदाता का नाम",
+    namePh: "e.g. राहुल शर्मा",
+    addrLabel: "पता (वैकल्पिक)",
+    addrPh: "e.g. अमराई, दुर्गापुर",
+    dateLabel: "दिनांक",
+    amtLabel: "राशि (₹)",
+    amtPh: "0.00",
+    recLabel: "रसीद क्र.",
+    recPh: "AJF-2026-001",
+    waLabel: "WhatsApp नंबर",
+    waPh: "98765 43210",
+    waHint: "केवल 10 अंक डालें",
+    purpLabel: "दान का उद्देश्य",
+    modeLabel: "भुगतान माध्यम",
+    btnSave: "सेव & शेयर",
+    btnShare: "केवल शेयर",
+    btnReset: "रीसेट",
+    statusInit: 'विवरण भरें & "सेव & शेयर" क्लिक करें',
+    footerNote: "डेटा Google Sheet में सेव · रसीद इमेज के रूप में शेयर",
+    rcSub: "( एन.जी.ओ. )",
+    rcTagline: "“मानवता के साथ, समाज के लिए, एक आलोक”",
+    rcAddress: "अमराई, दुर्गापुर, पश्चिम वर्धमान, पश्चिम बंगाल – 713203<br>संपर्क : 8944037258 / 9093300939 / 8210672676 / 9735141671",
+    rcTitle: "दान रसीद",
+    rcRec: "रसीद क्र.",
+    rcDate: "दिनांक",
+    rcName: "दानदाता का नाम",
+    rcAddr: "पता",
+    rcMob: "मोबाइल",
+    rcPurp: "दान का उद्देश्य",
+    rcMode: "भुगतान माध्यम",
+    rcWords: "रुपये शब्दों में",
+    rcSig1: "दानदाता के हस्ताक्षर",
+    rcSig2: "अधिकृत हस्ताक्षर / मोहर",
+    rcFooter: "“मानवता की सेवा में, आलोर जोगार...”",
+    rcThanks: "धन्यवाद · आपके उदार दान के लिए धन्यवाद",
+    purposeOptions: ["सामान्य दान", "शिक्षा", "स्वास्थ्य", "सामाजिक विकास", "पर्यावरण", "सामाजिक सहायता"],
+    modeOptions: ["नकद / Cash", "UPI", "बैंक ट्रांसफर", "चेक"],
+    currencyPrefix: "रुपये",
+    currencySuffix: "मात्र",
+    errName: "❌ कृपया दानदाता का नाम भरें।",
+    errDate: "❌ कृपया दिनांक चुनें।",
+    errAmount: "❌ सही राशि डालें (0 से अधिक)।",
+    errReceipt: "❌ रसीद क्रमांक आवश्यक है।",
+    errWhatsapp: "❌ WhatsApp नंबर डालें।",
+    errWhatsappLen: "❌ कृपया 10 अंकों का मोबाइल नंबर डालें।",
+    statusProcessing: "⏳ रसीद बन रही है...",
+    statusSuccess: "✅ रसीद सेव &amp; शेयर हो गई!",
+    statusShareOnly: "✅ रसीद शेयर हो गई!",
+    statusError: "❌ त्रुटि: ",
+    statusReset: "🔄 फॉर्म रीसेट हो गया।",
+    statusLogo: "✅ लोगो सेट हो गया — अब रसीद में भी दिखेगा।",
+    /* ---- Dashboard ---- */
+    dashTitle: "रिपोर्ट डैशबोर्ड",
+    dashLoading: "लोड हो रहा...",
+    dashLive: "लाइव",
+    dashOffline: "ऑफलाइन",
+    dashRefresh: "रिफ्रेश",
+    statCollection: "कुल Collection",
+    statCollectionSub: "Google Sheet से लाइव",
+    statDonors: "कुल Donors",
+    statDonorsSub: "कुल दानदाता",
+    statExpense: "कुल Help / खर्च",
+    statExpenseSub: "समाज सेवा में खर्च",
+    statBalance: "शेष Balance",
+    statBalanceSub: "उपलब्ध राशि",
+    addExpTitle: "नया खर्च / Help दर्ज करें",
+    expDateLabel: "दिनांक",
+    expCategoryLabel: "खर्च की श्रेणी",
+    expAmountLabel: "राशि (₹)",
+    expBeneficiaryLabel: "किसे मदद मिली",
+    expBeneficiaryPh: "e.g. सुनीता देवी / अनाथ आश्रम",
+    expNoteLabel: "विवरण (वैकल्पिक)",
+    expNotePh: "जैसे: 3 बच्चों की स्कूल फीस",
+    expAddBtn: "खर्च जोड़ें",
+    expAdded: "खर्च जोड़ दिया गया!",
+    expListTitle: "खर्च / Help की सूची",
+    expEmpty: "अभी कोई खर्च दर्ज नहीं हुआ",
+    expEmptySub: "ऊपर से नया खर्च जोड़ें",
+    expDelConfirm: "क्या आप इस खर्च को हटाना चाहते हैं?",
+    expErrDate: "❌ कृपया दिनांक चुनें।",
+    expErrAmount: "❌ सही राशि डालें (0 से अधिक)।",
+    expSaving: "⏳ सेव हो रहा है..."
+  },
+  en: {
+    title: "Aalor Jogar Foundation · Donation Receipt",
+    tabReceipt: "Make Receipt",
+    tabDashboard: "Dashboard",
+    header: "Aalor Jogar Foundation",
+    badge: "NGO",
+    logoFallback: "Upload Logo",
+    logoBtn: "Change / Upload Logo",
+    nameLabel: "Donor Name",
+    namePh: "e.g. Rahul Sharma",
+    addrLabel: "Address (Optional)",
+    addrPh: "e.g. Amrai, Durgapur",
+    dateLabel: "Date",
+    amtLabel: "Amount (₹)",
+    amtPh: "0.00",
+    recLabel: "Receipt No.",
+    recPh: "AJF-2026-001",
+    waLabel: "WhatsApp Number",
+    waPh: "98765 43210",
+    waHint: "Enter 10 digits only",
+    purpLabel: "Purpose of Donation",
+    modeLabel: "Payment Mode",
+    btnSave: "Save & Share",
+    btnShare: "Share Only",
+    btnReset: "Reset",
+    statusInit: 'Fill details & click "Save & Share"',
+    footerNote: "Data saved in Google Sheet · Receipt shared as image",
+    rcSub: "( NGO )",
+    rcTagline: "“With humanity, for society, one light”",
+    rcAddress: "Amrai, Durgapur, Paschim Bardhaman, West Bengal – 713203<br>Contact : 8944037258 / 9093300939 / 8210672676 / 9735141671",
+    rcTitle: "DONATION RECEIPT",
+    rcRec: "Receipt No.",
+    rcDate: "Date",
+    rcName: "Donor Name",
+    rcAddr: "Address",
+    rcMob: "Mobile",
+    rcPurp: "Purpose",
+    rcMode: "Payment Mode",
+    rcWords: "Amount in words",
+    rcSig1: "Donor's Signature",
+    rcSig2: "Authorized Signature / Seal",
+    rcFooter: "“In service of humanity, Aalor Jogar...”",
+    rcThanks: "Thank You for your kind donation",
+    purposeOptions: ["General Donation", "Education", "Health", "Social Development", "Environment", "Social Support"],
+    modeOptions: ["Cash", "UPI", "Bank Transfer", "Cheque"],
+    currencyPrefix: "Rupees",
+    currencySuffix: "Only",
+    errName: "❌ Please enter donor name.",
+    errDate: "❌ Please select a date.",
+    errAmount: "❌ Enter a valid amount (greater than 0).",
+    errReceipt: "❌ Receipt number is required.",
+    errWhatsapp: "❌ Please enter WhatsApp number.",
+    errWhatsappLen: "❌ Please enter a 10-digit mobile number.",
+    statusProcessing: "⏳ Generating receipt...",
+    statusSuccess: "✅ Receipt saved & shared!",
+    statusShareOnly: "✅ Receipt shared!",
+    statusError: "❌ Error: ",
+    statusReset: "🔄 Form reset.",
+    statusLogo: "✅ Logo set — it will now appear in the receipt.",
+    dashTitle: "Report Dashboard",
+    dashLoading: "Loading...",
+    dashLive: "Live",
+    dashOffline: "Offline",
+    dashRefresh: "Refresh",
+    statCollection: "Total Collection",
+    statCollectionSub: "Live from Google Sheet",
+    statDonors: "Total Donors",
+    statDonorsSub: "Unique donors",
+    statExpense: "Total Help / Expense",
+    statExpenseSub: "Spent on social service",
+    statBalance: "Balance Left",
+    statBalanceSub: "Available amount",
+    addExpTitle: "Add New Expense / Help",
+    expDateLabel: "Date",
+    expCategoryLabel: "Expense Category",
+    expAmountLabel: "Amount (₹)",
+    expBeneficiaryLabel: "Beneficiary",
+    expBeneficiaryPh: "e.g. Sunita Devi / Orphanage",
+    expNoteLabel: "Description (Optional)",
+    expNotePh: "e.g. School fees for 3 children",
+    expAddBtn: "Add Expense",
+    expAdded: "Expense added!",
+    expListTitle: "Expense / Help List",
+    expEmpty: "No expenses added yet",
+    expEmptySub: "Add new expense from above",
+    expDelConfirm: "Do you want to delete this expense?",
+    expErrDate: "❌ Please select a date.",
+    expErrAmount: "❌ Enter a valid amount (greater than 0).",
+    expSaving: "⏳ Saving..."
+  },
+  bn: {
+    title: "আলোর জোগার ফাউন্ডেশন · দান রসিদ",
+    tabReceipt: "রসিদ তৈরি করুন",
+    tabDashboard: "ড্যাশবোর্ড",
+    header: "আলোর জোগার ফাউন্ডেশন",
+    badge: "এনজিও",
+    logoFallback: "লোগো আপলোড করুন",
+    logoBtn: "লোগো পরিবর্তন / আপলোড করুন",
+    nameLabel: "দাতার নাম",
+    namePh: "উদাঃ রাহুল শর্মা",
+    addrLabel: "ঠিকানা (ঐচ্ছিক)",
+    addrPh: "উদাঃ অমরাই, দুর্গাপুর",
+    dateLabel: "তারিখ",
+    amtLabel: "পরিমাণ (₹)",
+    amtPh: "0.00",
+    recLabel: "রসিদ নং",
+    recPh: "AJF-2026-001",
+    waLabel: "WhatsApp নম্বর",
+    waPh: "98765 43210",
+    waHint: "শুধুমাত্র ১০ সংখ্যা লিখুন",
+    purpLabel: "দানের উদ্দেশ্য",
+    modeLabel: "পেমেন্ট মাধ্যম",
+    btnSave: "সেভ ও শেয়ার",
+    btnShare: "শুধু শেয়ার",
+    btnReset: "রিসেট",
+    statusInit: 'বিবরণ পূরণ করুন এবং "সেভ ও শেয়ার" ক্লিক করুন',
+    footerNote: "ডেটা Google Sheet-এ সংরক্ষিত · রসিদ ইমেজ হিসেবে শেয়ার",
+    rcSub: "( এনজিও )",
+    rcTagline: "“মানবতার সাথে, সমাজের জন্য, একটি আলো”",
+    rcAddress: "অমরাই, দুর্গাপুর, পশ্চিম বর্ধমান, পশ্চিমবঙ্গ – ৭১৩২০৩<br>যোগাযোগ : ৮৯৪৪০৩৭২৫৮ / ৯০৯৩৩০০৯৩৯ / ৮২১০৬৭২৬৭৬ / ৯৭৩৫১৪১৬৭১",
+    rcTitle: "দান রসিদ",
+    rcRec: "রসিদ নং",
+    rcDate: "তারিখ",
+    rcName: "দাতার নাম",
+    rcAddr: "ঠিকানা",
+    rcMob: "মোবাইল",
+    rcPurp: "দানের উদ্দেশ্য",
+    rcMode: "পেমেন্ট মাধ্যম",
+    rcWords: "কথায় পরিমাণ",
+    rcSig1: "দাতার স্বাক্ষর",
+    rcSig2: "অনুমোদিত স্বাক্ষর / সিল",
+    rcFooter: "“মানবতার সেবায়, আলোর জোগার...”",
+    rcThanks: "আপনার মূল্যবান দানের জন্য ধন্যবাদ",
+    purposeOptions: ["সাধারণ দান", "শিক্ষা", "স্বাস্থ্য", "সামাজিক উন্নয়ন", "পরিবেশ", "সামাজিক সহায়তা"],
+    modeOptions: ["নগদ / Cash", "UPI", "ব্যাংক ট্রান্সফার", "চেক"],
+    currencyPrefix: "টাকা",
+    currencySuffix: "মাত্র",
+    errName: "❌ দাতার নাম লিখুন।",
+    errDate: "❌ তারিখ নির্বাচন করুন।",
+    errAmount: "❌ সঠিক পরিমাণ লিখুন (০ এর বেশি)।",
+    errReceipt: "❌ রসিদ নম্বর প্রয়োজন।",
+    errWhatsapp: "❌ WhatsApp নম্বর লিখুন।",
+    errWhatsappLen: "❌ ১০ সংখ্যার মোবাইল নম্বর লিখুন।",
+    statusProcessing: "⏳ রসিদ তৈরি হচ্ছে...",
+    statusSuccess: "✅ রসিদ সেভ ও শেয়ার হয়েছে!",
+    statusShareOnly: "✅ রসিদ শেয়ার হয়েছে!",
+    statusError: "❌ ত্রুটি: ",
+    statusReset: "🔄 ফর্ম রিসেট হয়েছে।",
+    statusLogo: "✅ লোগো সেট হয়েছে — এখন রসিদেও দেখা যাবে।",
+    dashTitle: "রিপোর্ট ড্যাশবোর্ড",
+    dashLoading: "লোড হচ্ছে...",
+    dashLive: "লাইভ",
+    dashOffline: "অফলাইন",
+    dashRefresh: "রিফ্রেশ",
+    statCollection: "মোট Collection",
+    statCollectionSub: "Google Sheet থেকে লাইভ",
+    statDonors: "মোট Donors",
+    statDonorsSub: "মোট দাতা",
+    statExpense: "মোট Help / খরচ",
+    statExpenseSub: "সমাজসেবায় খরচ",
+    statBalance: "অবশিষ্ট Balance",
+    statBalanceSub: "উপলব্ধ পরিমাণ",
+    addExpTitle: "নতুন খরচ / Help যোগ করুন",
+    expDateLabel: "তারিখ",
+    expCategoryLabel: "খরচের ধরন",
+    expAmountLabel: "পরিমাণ (₹)",
+    expBeneficiaryLabel: "কাকে সাহায্য",
+    expBeneficiaryPh: "উদাঃ সুনীতা দেবী / এতিমখানা",
+    expNoteLabel: "বিবরণ (ঐচ্ছিক)",
+    expNotePh: "উদাঃ ৩ জন শিশুর স্কুল ফি",
+    expAddBtn: "খরচ যোগ করুন",
+    expAdded: "খরচ যোগ হয়েছে!",
+    expListTitle: "খরচ / Help এর তালিকা",
+    expEmpty: "এখনো কোনো খরচ যোগ হয়নি",
+    expEmptySub: "উপর থেকে নতুন খরচ যোগ করুন",
+    expDelConfirm: "আপনি কি এই খরচ মুছতে চান?",
+    expErrDate: "❌ তারিখ নির্বাচন করুন।",
+    expErrAmount: "❌ সঠিক পরিমাণ লিখুন (০ এর বেশি)।",
+    expSaving: "⏳ সেভ হচ্ছে..."
+  }
+};
+
+/* ================== STATE ================== */
+let currentLang = 'hi';
+let uploadedLogos = {};
+
+try {
+  const savedLang = localStorage.getItem('ajf_lang');
+  if (savedLang && translations[savedLang]) currentLang = savedLang;
+  uploadedLogos = JSON.parse(localStorage.getItem('ajf_logos') || '{}');
+} catch(e){ uploadedLogos = {}; }
+
+/* ================== LOCAL FALLBACK STORAGE ================== */
+function getLocalExpenses(){
+  try { return JSON.parse(localStorage.getItem('ajf_expenses') || '[]'); }
+  catch(e){ return []; }
+}
+function saveLocalExpenses(list){
+  try { localStorage.setItem('ajf_expenses', JSON.stringify(list)); } catch(e){}
+}
+
+/* ================== DOM ================== */
+const nameInput = document.getElementById('customerName');
+const addressInput = document.getElementById('donorAddress');
+const dateInput = document.getElementById('receiptDate');
+const amountInput = document.getElementById('amount');
+const receiptNumberInput = document.getElementById('receiptNumber');
+const whatsappInput = document.getElementById('whatsappNumber');
+const purposeSelect = document.getElementById('purpose');
+const payModeSelect = document.getElementById('payMode');
+const statusDiv = document.getElementById('statusMessage');
+const langSelect = document.getElementById('languageSelect');
+const saveAndShareBtn = document.getElementById('saveAndShareBtn');
+const shareOnlyBtn = document.getElementById('shareOnlyBtn');
+const resetBtn = document.getElementById('resetBtn');
+const ngoLogo = document.getElementById('ngoLogo');
+const logoFallback = document.getElementById('logoFallback');
+const logoInput = document.getElementById('logoInput');
+const pdfLogo = document.getElementById('pdfLogo');
+const pdfLogoFallback = document.getElementById('pdfLogoFallback');
+const pdfNameDisplay = document.getElementById('pdfNameDisplay');
+const pdfAddressDisplay = document.getElementById('pdfAddressDisplay');
+const pdfMobileDisplay = document.getElementById('pdfMobileDisplay');
+const pdfDateDisplay = document.getElementById('pdfDateDisplay');
+const pdfAmountDisplay = document.getElementById('pdfAmountDisplay');
+const pdfAmountBig = document.getElementById('pdfAmountBig');
+const pdfReceiptDisplay = document.getElementById('pdfReceiptDisplay');
+const pdfPurposeDisplay = document.getElementById('pdfPurposeDisplay');
+const pdfModeDisplay = document.getElementById('pdfModeDisplay');
+const pdfWords = document.getElementById('pdfWords');
+const rowAddress = document.getElementById('rowAddress');
+const expCategorySelect = document.getElementById('expCategory');
+
+/* ================== TAB SWITCHING ================== */
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const tab = this.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + tab).classList.add('active');
+    if (tab === 'dashboard') fetchAndRenderDashboard();
+  });
+});
+
+/* ================== LANGUAGE ================== */
+function t(key){ return translations[currentLang][key] || key; }
+
+function fillPurposeDropdown(){
+  const val = purposeSelect.value;
+  purposeSelect.innerHTML = '';
+  t('purposeOptions').forEach(opt => {
+    const o = document.createElement('option');
+    o.textContent = opt;
+    purposeSelect.appendChild(o);
+  });
+  if (val) purposeSelect.value = val;
+}
+function fillPayModeDropdown(){
+  const val = payModeSelect.value;
+  payModeSelect.innerHTML = '';
+  t('modeOptions').forEach(opt => {
+    const o = document.createElement('option');
+    o.textContent = opt;
+    payModeSelect.appendChild(o);
+  });
+  if (val) payModeSelect.value = val;
+}
+function fillExpenseCategoryDropdown(){
+  const val = expCategorySelect.value;
+  expCategorySelect.innerHTML = '';
+  EXPENSE_CATEGORIES.forEach(cat => {
+    const o = document.createElement('option');
+    o.value = cat.value;
+    o.textContent = cat.icon + ' ' + (cat[currentLang] || cat.hi);
+    expCategorySelect.appendChild(o);
+  });
+  if (val) expCategorySelect.value = val;
+}
+
+function applyLanguage(lang){
+  currentLang = lang;
+  try { localStorage.setItem('ajf_lang', lang); } catch(e){}
+  langSelect.value = lang;
+  document.title = t('title');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t(key)) el.innerHTML = t(key);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t(key)) el.placeholder = t(key);
+  });
+
+  fillPurposeDropdown();
+  fillPayModeDropdown();
+  fillExpenseCategoryDropdown();
+
+  applyLogo();
+  setStatus(t('statusInit'), false);
+
+  // Re-render dashboard so language applies to list
+  renderDashboard();
+}
+
+/* ================== LOGO ================== */
+function getLogoForLang(lang){
+  if (uploadedLogos[lang]) return uploadedLogos[lang];
+  if (LANG_LOGOS[lang]) return LANG_LOGOS[lang];
+  return '';
+}
+
+async function applyLogo(){
+  const raw = getLogoForLang(currentLang);
+  if (!raw){
+    ngoLogo.style.display = 'none';
+    pdfLogo.style.display = 'none';
+    logoFallback.style.display = 'flex';
+    pdfLogoFallback.style.display = 'flex';
+    return;
+  }
+  const src = await urlToDataURL(raw);
+  ngoLogo.src = src;
+  pdfLogo.src = src;
+  ngoLogo.style.display = 'block';
+  pdfLogo.style.display = 'block';
+  logoFallback.style.display = 'none';
+  pdfLogoFallback.style.display = 'none';
+}
+
+logoInput.addEventListener('change', function(e){
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    uploadedLogos[currentLang] = ev.target.result;
+    try { localStorage.setItem('ajf_logos', JSON.stringify(uploadedLogos)); } catch(err){}
+    applyLogo();
+    setStatus(t('statusLogo'), false);
+  };
+  reader.readAsDataURL(file);
+});
+
+/* ================== HELPERS ================== */
+function setStatus(msg, isError){
+  isError = !!isError;
+  statusDiv.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + '"></i> ' + msg;
+  statusDiv.style.borderLeftColor = isError ? '#c0392b' : '#1b7a3d';
+  statusDiv.style.background = isError ? '#fdeeee' : '#eef7f0';
+  statusDiv.style.color = isError ? '#7a2e2e' : '#14442a';
+}
+function setStatusWithDownload(msg, url, filename){
+  setStatus(msg, false);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename || 'receipt.png';
+  a.textContent = '📥 Download';
+  a.style.display = 'inline-block';
+  a.style.marginTop = '6px';
+  statusDiv.appendChild(a);
+}
+function escapeHtml(s){
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function formatINR(n){
+  n = parseFloat(n) || 0;
+  return '₹ ' + n.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function formatDateShort(d){
+  if (!d) return '';
+  try {
+    const locale = currentLang === 'bn' ? 'bn-IN' : 'en-IN';
+    return new Date(d + 'T00:00:00').toLocaleDateString(locale, { day:'2-digit', month:'short', year:'numeric' });
+  } catch(e){ return d; }
+}
+
+/* ================== AMOUNT IN WORDS ================== */
+const ONES = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+const TENS = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+function two(n){ return n < 20 ? ONES[n] : TENS[Math.floor(n/10)] + (n%10 ? ' ' + ONES[n%10] : ''); }
+function three(n){
+  let s = '';
+  if (n > 99){ s += ONES[Math.floor(n/100)] + ' Hundred'; n %= 100; if (n) s += ' '; }
+  if (n) s += two(n);
+  return s;
+}
+function amountInWords(num){
+  num = Math.floor(num);
+  if (num === 0) return 'Zero';
+  let s = '';
+  const crore = Math.floor(num / 10000000); num %= 10000000;
+  const lakh = Math.floor(num / 100000); num %= 100000;
+  const thou = Math.floor(num / 1000); num %= 1000;
+  if (crore) s += three(crore) + ' Crore ';
+  if (lakh) s += three(lakh) + ' Lakh ';
+  if (thou) s += three(thou) + ' Thousand ';
+  if (num) s += three(num);
+  return s.trim();
+}
+
+/* ================== FORM VALIDATION ================== */
+function getFormData(){
+  const name = nameInput.value.trim();
+  const address = addressInput.value.trim();
+  const date = dateInput.value;
+  const amount = parseFloat(amountInput.value);
+  const receiptNo = receiptNumberInput.value.trim();
+  const purpose = purposeSelect.value;
+  const mode = payModeSelect.value;
+  let whatsapp = whatsappInput.value.trim().replace(/\s/g,'').replace(/\D/g,'');
+
+  if (!name){ setStatus(t('errName'), true); return null; }
+  if (!date){ setStatus(t('errDate'), true); return null; }
+  if (isNaN(amount) || amount <= 0){ setStatus(t('errAmount'), true); return null; }
+  if (!receiptNo){ setStatus(t('errReceipt'), true); return null; }
+  if (!whatsapp){ setStatus(t('errWhatsapp'), true); return null; }
+  if (whatsapp.length !== 10){ setStatus(t('errWhatsappLen'), true); return null; }
+
+  return { name, address, date, amount, receiptNo, purpose, mode, rawWhatsapp: whatsapp, whatsapp: '+91' + whatsapp };
+}
+
+/* ================== RECEIPT PREVIEW ================== */
+function updateReceiptPreview(data){
+  const displayDate = data.date
+    ? new Date(data.date + 'T00:00:00').toLocaleDateString(currentLang === 'bn' ? 'bn-IN' : 'en-IN', { day:'2-digit', month:'2-digit', year:'numeric' })
+    : '—';
+  pdfNameDisplay.textContent = data.name || '—';
+  pdfDateDisplay.textContent = displayDate;
+  pdfAmountDisplay.textContent = data.amount.toFixed(2);
+  pdfAmountBig.textContent = data.amount.toFixed(2);
+  pdfReceiptDisplay.textContent = data.receiptNo || '—';
+  pdfMobileDisplay.textContent = data.rawWhatsapp ? ('+91 ' + data.rawWhatsapp) : '—';
+  pdfPurposeDisplay.textContent = data.purpose || '—';
+  pdfModeDisplay.textContent = data.mode || '—';
+  const words = amountInWords(data.amount);
+  pdfWords.textContent = t('currencyPrefix') + ' ' + words + ' ' + t('currencySuffix');
+  if (data.address){
+    rowAddress.style.display = 'flex';
+    pdfAddressDisplay.textContent = data.address;
+  } else {
+    rowAddress.style.display = 'none';
+  }
+}
+
+function waitForImages(el){
+  const imgs = Array.prototype.slice.call(el.querySelectorAll('img'));
+  return Promise.all(imgs.map(function(img){
+    if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+    return new Promise(function(res){
+      img.addEventListener('load', res, { once:true });
+      img.addEventListener('error', res, { once:true });
+      setTimeout(res, 3000);
+    });
+  }));
+}
+
+async function generateReceiptImage(data){
+  updateReceiptPreview(data);
+  await applyLogo();
+  const element = document.getElementById('receipt-canvas-area');
+  await waitForImages(element);
+  await new Promise(function(r){ setTimeout(r, 150); });
+  return new Promise(function(resolve, reject){
+    html2canvas(element, {
+      scale: 2.5, useCORS: true, allowTaint: false, logging: false,
+      backgroundColor: '#ffffff', width: 480, height: element.scrollHeight
+    }).then(function(canvas){
+      canvas.toBlob(function(blob){
+        if (!blob){ reject(new Error('Image generation failed')); return; }
+        resolve({ blob: blob, dataUrl: canvas.toDataURL('image/png') });
+      }, 'image/png');
+    }).catch(reject);
+  });
+}
+
+/* ================== SHARE ================== */
+async function shareImage(blob, filename){
+  filename = filename || 'receipt.png';
+  if (!navigator.share || !navigator.canShare){
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 5000);
+    setStatusWithDownload('📲 Share not supported — Receipt downloaded.', url, filename);
+    return;
+  }
+  try {
+    const file = new File([blob], filename, { type: 'image/png' });
+    if (navigator.canShare({ files: [file] })){
+      await navigator.share({ title: t('rcTitle'), text: t('rcThanks'), files: [file] });
+      setStatus(t('statusShareOnly'), false);
+      return;
+    }
+    throw new Error('File share not supported');
+  } catch (err){
+    if (err && err.name === 'AbortError'){ setStatus('ℹ️ Share cancelled.', false); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 5000);
+    setStatusWithDownload('⚠️ Share failed — Receipt downloaded.', url, filename);
+  }
+}
+
+async function saveToSheet(data){
+  const payload = {
+    type: 'donation',
+    name: data.name, address: data.address, date: data.date, amount: data.amount,
+    receiptNo: data.receiptNo, purpose: data.purpose, mode: data.mode,
+    whatsapp: data.whatsapp, org: 'Aalor Jogar Foundation',
+    timestamp: new Date().toISOString()
+  };
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e){ console.warn('Sheet save failed', e); }
+}
+
+/* ================== MAIN HANDLERS ================== */
+async function handleSaveAndShare(){
+  const data = getFormData();
+  if (!data) return;
+  saveAndShareBtn.disabled = true;
+  shareOnlyBtn.disabled = true;
+  setStatus(t('statusProcessing'), false);
+  try {
+    await saveToSheet(data);
+    const result = await generateReceiptImage(data);
+    await shareImage(result.blob, 'receipt_' + data.receiptNo + '.png');
+    setStatus(t('statusSuccess'), false);
+    // refresh dashboard data in background
+    fetchDonationsFromSheet().then(renderDashboard);
+  } catch (error){
+    console.error(error);
+    setStatus(t('statusError') + (error && error.message ? error.message : 'Unknown'), true);
+  } finally {
+    saveAndShareBtn.disabled = false;
+    shareOnlyBtn.disabled = false;
+  }
+}
+
+async function handleShareOnly(){
+  const data = getFormData();
+  if (!data) return;
+  saveAndShareBtn.disabled = true;
+  shareOnlyBtn.disabled = true;
+  setStatus(t('statusProcessing'), false);
+  try {
+    const result = await generateReceiptImage(data);
+    await shareImage(result.blob, 'receipt_' + data.receiptNo + '.png');
+    setStatus(t('statusShareOnly'), false);
+  } catch (error){
+    console.error(error);
+    setStatus(t('statusError') + (error && error.message ? error.message : 'Unknown'), true);
+  } finally {
+    saveAndShareBtn.disabled = false;
+    shareOnlyBtn.disabled = false;
+  }
+}
+
+function resetForm(){
+  nameInput.value = '';
+  addressInput.value = '';
+  amountInput.value = '';
+  receiptNumberInput.value = '';
+  whatsappInput.value = '';
+  purposeSelect.selectedIndex = 0;
+  payModeSelect.selectedIndex = 0;
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.value = today;
+  receiptNumberInput.placeholder = 'AJF-' + new Date().getFullYear() + '-' + Date.now().toString().slice(-4);
+  pdfNameDisplay.textContent = '—';
+  pdfAddressDisplay.textContent = '—';
+  pdfMobileDisplay.textContent = '—';
+  pdfDateDisplay.textContent = '—';
+  pdfAmountDisplay.textContent = '0.00';
+  pdfAmountBig.textContent = '0.00';
+  pdfReceiptDisplay.textContent = '—';
+  pdfPurposeDisplay.textContent = '—';
+  pdfModeDisplay.textContent = '—';
+  pdfWords.textContent = '—';
+  rowAddress.style.display = 'none';
+  setStatus(t('statusReset'), false);
+}
+
+/* ================== LIVE FETCH ================== */
+function setLiveBadge(state){
+  const badge = document.getElementById('liveBadge');
+  if (!badge) return;
+  badge.classList.remove('live','loading','offline');
+  if (state === 'loading'){
+    badge.classList.add('loading');
+    badge.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> ' + t('dashLoading');
+  } else if (state === 'ok'){
+    badge.classList.add('live');
+    badge.innerHTML = '<i class="fas fa-circle" style="font-size:.55rem;"></i> ' + t('dashLive');
+  } else if (state === 'error'){
+    badge.classList.add('offline');
+    badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + t('dashOffline');
+  }
+}
+
+async function fetchDonationsFromSheet(){
+  liveStatus = 'loading';
+  setLiveBadge('loading');
+  const refreshBtn = document.getElementById('refreshBtn');
+  if (refreshBtn){ refreshBtn.disabled = true; refreshBtn.classList.add('spinning'); }
+
+  try {
+    const json = await jsonpFetch(SHEET_URL, 15000);
+    if (!json || json.status !== 'ok'){
+      throw new Error((json && json.message) || 'Invalid response');
+    }
+    liveDonations = Array.isArray(json.donations) ? json.donations : [];
+    liveExpenses  = Array.isArray(json.expenses)  ? json.expenses  : [];
+    liveStatus = 'ok';
+    lastFetched = new Date();
+    setLiveBadge('ok');
+    return true;
+  } catch (err){
+    console.error('[AJF] Fetch error:', err);
+    liveStatus = 'error';
+    liveErrorMsg = err.message;
+    setLiveBadge('error');
+    return false;
+  } finally {
+    if (refreshBtn){ refreshBtn.disabled = false; refreshBtn.classList.remove('spinning'); }
+  }
+}
+
+async function fetchAndRenderDashboard(){
+  await fetchDonationsFromSheet();
+  renderDashboard();
+}
+
+/* ================== DASHBOARD RENDER ================== */
+function renderDashboard(){
+  const donations = liveDonations || [];
+  // Expenses: live from sheet; fallback to local if sheet fetch failed
+  const expenses = (liveStatus === 'ok' || liveExpenses.length > 0)
+    ? liveExpenses
+    : getLocalExpenses();
+
+  const totalCollection = donations.reduce((s,d) => s + (parseFloat(d.amount) || 0), 0);
+  const totalExpense = expenses.reduce((s,e) => s + (parseFloat(e.amount) || 0), 0);
+  const balance = totalCollection - totalExpense;
+  const uniqueDonors = new Set(donations.map(d => (d.name || '').trim().toLowerCase()).filter(Boolean));
+  const donorsCount = uniqueDonors.size;
+
+  const colEl = document.getElementById('statCollection');
+  const donEl = document.getElementById('statDonors');
+  const expEl = document.getElementById('statExpense');
+  const balEl = document.getElementById('statBalance');
+
+  if (liveStatus === 'loading' && donations.length === 0){
+    colEl.textContent = '₹ ...'; donEl.textContent = '...'; balEl.textContent = '₹ ...';
+  } else if (liveStatus === 'error' && donations.length === 0){
+    colEl.textContent = '₹ —'; donEl.textContent = '—'; balEl.textContent = '₹ —';
+  } else {
+    colEl.textContent = formatINR(totalCollection);
+    donEl.textContent = String(donorsCount);
+    balEl.textContent = formatINR(balance);
+  }
+  expEl.textContent = formatINR(totalExpense);
+
+  const balCard = balEl.closest('.stat-card');
+  if (balance < 0){ balCard.classList.remove('red'); balCard.classList.add('orange'); }
+  else { balCard.classList.remove('orange'); balCard.classList.add('red'); }
+
+  // Expenses list
+  const eList = document.getElementById('expensesList');
+  if (expenses.length === 0){
+    eList.innerHTML = '<div class="empty-state"><i class="fas fa-receipt"></i>' + t('expEmpty') + '<br><small>' + t('expEmptySub') + '</small></div>';
+  } else {
+    eList.innerHTML = expenses.slice(0, 100).map(e => `
+      <div class="txn-item expense">
+        <div class="txn-info">
+          <div class="txn-title">${escapeHtml(getCategoryDisplay(e.category))}${e.beneficiary ? ' · ' + escapeHtml(e.beneficiary) : ''}</div>
+          <div class="txn-meta">${formatDateShort(e.date)}${e.note ? ' · ' + escapeHtml(e.note) : ''}</div>
+        </div>
+        <div class="txn-amount">${formatINR(e.amount)}</div>
+        <button class="del-btn" data-id="${escapeHtml(String(e.id))}" title="Delete"><i class="fas fa-trash"></i></button>
+      </div>
+    `).join('');
+  }
+}
+
+/* ---------- Refresh ---------- */
+document.getElementById('refreshBtn').addEventListener('click', function(){
+  fetchAndRenderDashboard();
+});
+
+/* ---------- Add Expense ---------- */
+document.getElementById('addExpenseBtn').addEventListener('click', async function(){
+  const date = document.getElementById('expDate').value;
+  const category = expCategorySelect.value;
+  const amount = parseFloat(document.getElementById('expAmount').value);
+  const beneficiary = document.getElementById('expBeneficiary').value.trim();
+  const note = document.getElementById('expNote').value.trim();
+
+  if (!date){ alert(t('expErrDate')); return; }
+  if (isNaN(amount) || amount <= 0){ alert(t('expErrAmount')); return; }
+
+  const btn = this;
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> ' + t('expSaving');
+
+  const newExpense = {
+    id: String(Date.now()) + '_' + Math.floor(Math.random()*1000),
+    date, category, amount, beneficiary, note,
+    createdAt: new Date().toISOString()
+  };
+
+  // Save to sheet (fire-and-forget)
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.assign({ type: 'expense' }, newExpense))
+    });
+  } catch(e){ console.warn('Expense sheet save failed', e); }
+
+  // Also save locally (fallback + instant UI)
+  const localList = getLocalExpenses();
+  localList.unshift(newExpense);
+  saveLocalExpenses(localList);
+  liveExpenses.unshift(newExpense);
+
+  // Clear form
+  document.getElementById('expAmount').value = '';
+  document.getElementById('expBeneficiary').value = '';
+  document.getElementById('expNote').value = '';
+
+  renderDashboard();
+
+  btn.innerHTML = '<i class="fas fa-check"></i> ' + t('expAdded');
+  btn.style.background = '#1b7a3d';
+  setTimeout(function(){ btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 1500);
+
+  // Refresh from sheet to get authoritative list
+  fetchDonationsFromSheet().then(renderDashboard);
+});
+
+/* ---------- Delete Expense ---------- */
+document.getElementById('expensesList').addEventListener('click', async function(ev){
+  const btn = ev.target.closest('.del-btn');
+  if (!btn) return;
+  const id = btn.getAttribute('data-id');
+  if (!confirm(t('expDelConfirm'))) return;
+
+  // Send delete to sheet
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'expense_delete', id: id })
+    });
+  } catch(e){ console.warn('Expense delete failed', e); }
+
+  // Remove locally too
+  liveExpenses = liveExpenses.filter(x => String(x.id) !== String(id));
+  saveLocalExpenses(getLocalExpenses().filter(x => String(x.id) !== String(id)));
+  renderDashboard();
+
+  // Refresh from sheet
+  setTimeout(function(){ fetchDonationsFromSheet().then(renderDashboard); }, 800);
+});
+
+/* ================== EVENTS ================== */
+saveAndShareBtn.addEventListener('click', handleSaveAndShare);
+shareOnlyBtn.addEventListener('click', handleShareOnly);
+resetBtn.addEventListener('click', resetForm);
+langSelect.addEventListener('change', function(){ applyLanguage(this.value); });
+whatsappInput.addEventListener('input', function(){
+  this.value = this.value.replace(/\D/g,'').slice(0,10);
+});
+
+/* ================== INIT ================== */
+(function init(){
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.value = today;
+  document.getElementById('expDate').value = today;
+  receiptNumberInput.placeholder = 'AJF-' + new Date().getFullYear() + '-' + Date.now().toString().slice(-4);
+
+  applyLanguage(currentLang);
+  fetchDonationsFromSheet().then(renderDashboard);
+
+  setInterval(function(){
+    if (document.getElementById('page-dashboard').classList.contains('active')){
+      fetchDonationsFromSheet().then(renderDashboard);
+    }
+  }, 120000);
+})();
+
+})();
+</script>
+</body>
+</html>
